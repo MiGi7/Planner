@@ -3,12 +3,20 @@
 
 #include "pch.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 
-int main()
-{	
-    std::cout << "Hello World!\n"; 
+
+bool checkedSaved() {
+	const string file = "data_file.txt";
+	ifstream ifile(file);
+	return (bool)ifile;
+}
+
+int main() {	
+	bool there = checkedSaved();
+	cout << there << endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
