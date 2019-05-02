@@ -2,4 +2,5 @@
 $(echo git add .)
 $(echo git commit -m "autopushed")
 $(echo git push)
-read dir
+echo "The push was successful. Hit any key to exit"
+read empty
