@@ -1,3 +1,12 @@
-﻿  pch.cpp
-  visuals.cpp
-c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(11): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
+﻿  visuals.cpp
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(8): error C2065: 'time_t': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(8): error C2146: syntax error: missing ';' before identifier 't'
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(8): error C2065: 't': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(8): error C3861: 'time': identifier not found
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(9): error C2065: 'tm': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(9): error C2065: 'now': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(9): error C2065: 't': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(9): error C3861: 'localtime': identifier not found
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(10): error C2065: 'cout': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(10): error C2065: 'now': undeclared identifier
+c:\users\michael\desktop\planner\daily_planner\daily_planner\visuals.cpp(10): error C2065: 'endl': undeclared identifier
