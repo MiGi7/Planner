@@ -23,7 +23,7 @@ void checkedSaved() {
 	cout << "There is saved data present" << endl;
 }
 
-int cool() {
+int main() {
 	string x;
 	cin >> x;
 	if (x == "check") {
