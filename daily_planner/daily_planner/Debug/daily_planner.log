@@ -1,3 +1,4 @@
 ﻿  pch.cpp
   daily_planner.cpp
-  daily_planner.vcxproj -> C:\Users\mikem\Desktop\Planner\Planner\daily_planner\Debug\daily_planner.exe
+  LINK : C:\Users\Michael\Desktop\Planner\daily_planner\Debug\daily_planner.exe not found or not built by the last incremental link; performing full link
+  daily_planner.vcxproj -> C:\Users\Michael\Desktop\Planner\daily_planner\Debug\daily_planner.exe
