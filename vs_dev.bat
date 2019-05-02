@@ -1,1 +1,1 @@
-start cmd /k echo VsDevCmd.bat
+start VsDevCmd.bat
