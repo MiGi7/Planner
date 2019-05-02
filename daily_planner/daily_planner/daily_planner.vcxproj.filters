@@ -26,5 +26,8 @@
     <ClCompile Include="daily_planner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="visuals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
