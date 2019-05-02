@@ -2,22 +2,38 @@
 //
 
 #include "pch.h"
+#include <string>
 #include <iostream>
 #include <fstream>
 using namespace std;
 
 
 
-bool checkedSaved() {
+void checkedSaved() {
 	const string file = "data_file.txt";
 	ifstream ifile(file);
-	return (bool)ifile;
+	if (!(bool)ifile) {
+		ofstream file_;
+		file_.open("data_file.txt");
+		file_ << "This is saved data for Planner" << endl;
+		file_.close();
+		cout << "Saved data created" << endl;
+		return;
+	}
+	cout << "There is saved data present" << endl;
 }
 
-int main() {	
-	bool there = checkedSaved();
-	cout << there << endl;
+int cool() {
+	string x;
+	cin >> x;
+	if (x == "check") {
+		checkedSaved();
+	}
+	cout << "good?" << endl;
+	cin >> x;
+	return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
