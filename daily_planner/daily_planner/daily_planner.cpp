@@ -24,14 +24,8 @@ void checkedSaved() {
 }
 
 int main() {
-	string x;
-	cin >> x;
-	if (x == "check") {
-		checkedSaved();
-	}
-	cout << "good?" << endl;
-	cin >> x;
-	return 0;
+	string date = Date();
+	cout << date << endl;
 }
 
 
