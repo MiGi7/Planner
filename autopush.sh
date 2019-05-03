@@ -1,4 +1,4 @@
-#!bin/base
+#!/bin/bash
 $(echo git add .)
 $(echo git commit -m "autopushed")
 $(echo git push)
