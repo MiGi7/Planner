@@ -1,7 +1,6 @@
 ﻿  pch.cpp
-c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(8): error C2011: 'DateTime': 'class' type redefinition
-  c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(8): note: see declaration of 'DateTime'
-c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(19): error C2011: 'Task': 'class' type redefinition
-  c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(19): note: see declaration of 'Task'
-c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(25): error C2011: 'Data': 'class' type redefinition
-  c:\users\michael\desktop\planner\daily_planner\daily_planner\data.h(25): note: see declaration of 'Data'
+  daily_planner.cpp
+  data.cpp
+  visuals.cpp
+  Generating Code...
+  daily_planner.vcxproj -> C:\Users\mikem\Desktop\Planner\daily_planner\Debug\daily_planner.exe

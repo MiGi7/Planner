@@ -25,10 +25,9 @@ void checkedSaved() {
 
 
 int main() {
-	Data test = Data{};
-	Task task = {};
-	test.addTask(task);
-	cout << "success" << endl;
+	Data newData;
+	newData.addTask("poo");
+	newData.incomp_Tasks[0].printTaskName();
 }
 
 

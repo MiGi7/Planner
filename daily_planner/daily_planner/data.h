@@ -4,30 +4,52 @@
 #include <ctime>
 #include <vector>
 
-using namespace std;
+#ifndef DateTime_H
+#define DateTime_H
 class DateTime {
-	string month;
+	std::string month;
 	int day;
 	int year;
 	int hour;
 	int minute;
 	int second;
-
-	string getMonth(int num);
+public:
+	DateTime();
+	std::string getMonth(int num);
+	std::string dateToString();
+	std::string timeToString();
 };
+#endif
+
+#ifndef Task_H
+#define Task_H
+
 
 class Task {
-	vector<string> toDo;
+	std::string toDo;
 	DateTime creationTime;
 	bool finished;
+public:
+	Task(std::string task="");
+	void printTaskName();
 };
 
+#endif Task_H
+
+#ifndef Data_H
+#define Data_H
+
+
 class Data {
-	vector<Task> comp_Tasks;
-	vector<Task>incomp_tasks;
+public:
+	std::vector<Task>comp_Tasks;
+	std::vector<Task>incomp_Tasks;
 	int longest_Com_Task;
 	int longest_Incom_Task;
-public:
-	void addTask(Task task);
+
+	Data();
+	void addTask(std::string todo);
 	void movetoCom(int pos);
 };
+
+#endif Data_H
