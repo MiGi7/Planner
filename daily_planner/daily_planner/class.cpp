@@ -9,5 +9,15 @@ class Data {
 	string comp_tasks[100];
 	string incomp_tasks[100];
 	int time[100];
+	
+public:
+	int longestTask() {
+		int max_size = 0;
+		for (string task : comp_tasks) {
+			if (max_size < task.size()) {
+				max_s
+			 }
+		}
+	}
 
 };
