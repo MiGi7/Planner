@@ -2,5 +2,6 @@
 
 #include "pch.h"
 #include "visuals.h"
+#include "data.h"
 
 // In general, ignore this file, but keep it around if you are using pre-compiled headers.

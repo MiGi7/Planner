@@ -21,6 +21,9 @@
     <ClInclude Include="visuals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -32,7 +35,7 @@
     <ClCompile Include="visuals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="class.cpp">
+    <ClCompile Include="data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

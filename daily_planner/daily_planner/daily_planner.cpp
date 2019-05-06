@@ -23,9 +23,12 @@ void checkedSaved() {
 	cout << "There is saved data present" << endl;
 }
 
+
 int main() {
-	string date = Date();
-	cout << date << endl;
+	Data test = Data{};
+	Task task = {};
+	test.addTask(task);
+	cout << "success" << endl;
 }
 
 
