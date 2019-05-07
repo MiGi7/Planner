@@ -10,14 +10,17 @@ class DateTime {
 	std::string month;
 	int day;
 	int year;
-	int hour;
-	int minute;
-	int second;
+	std::string hour;
+	std::string minute;
+	std::string second;
+	int length;
+	int len;
 public:
 	DateTime();
 	std::string getMonth(int num);
 	std::string dateToString();
 	std::string timeToString();
+	std::string timeStamp();
 };
 #endif
 
@@ -26,12 +29,14 @@ public:
 
 
 class Task {
+public:
 	std::string toDo;
+	int len;
 	DateTime creationTime;
 	bool finished;
-public:
 	Task(std::string task="");
 	void printTaskName();
+
 };
 
 #endif Task_H
@@ -48,8 +53,10 @@ public:
 	int longest_Incom_Task;
 
 	Data();
+	void updateLen();
 	void addTask(std::string todo);
 	void movetoCom(int pos);
+	int exportData();
 };
 
 #endif Data_H
