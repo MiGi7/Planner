@@ -7,16 +7,18 @@
 #ifndef DateTime_H
 #define DateTime_H
 class DateTime {
+public:
 	std::string month;
-	int day;
-	int year;
+	std::string day;
+	std::string year;
 	std::string hour;
 	std::string minute;
 	std::string second;
-	int length;
 	int len;
-public:
+
 	DateTime();
+
+	DateTime(std::string str_time);
 	std::string getMonth(int num);
 	std::string dateToString();
 	std::string timeToString();
@@ -35,6 +37,7 @@ public:
 	DateTime creationTime;
 	bool finished;
 	Task(std::string task="");
+	Task(std::string task, DateTime dt);
 	void printTaskName();
 
 };
@@ -54,9 +57,12 @@ public:
 
 	Data();
 	void updateLen();
-	void addTask(std::string todo);
+	void addTaskIncom(std::string todo);
+	void addTaskIncom(Task task);
+	void addTaskCom(Task task);
 	void movetoCom(int pos);
 	int exportData();
+	int importData();
 };
 
 #endif Data_H

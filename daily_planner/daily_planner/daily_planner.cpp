@@ -26,11 +26,8 @@ void checkedSaved() {
 
 int main() {
 	Data newData;
-	newData.addTask("Gina");
-	newData.addTask("poo");
-	newData.addTask("Ginas");
-	newData.movetoCom(0);
-	newData.updateLen();
+	newData.importData();
+	newData.incomp_Tasks[0].printTaskName();
 	newData.exportData();
 }
 

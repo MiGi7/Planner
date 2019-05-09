@@ -15,8 +15,8 @@ DateTime::DateTime(){
 	tm timeinfo;
 	localtime_s(&timeinfo, &rawtime);
 	month = getMonth(timeinfo.tm_mon);
-	day = timeinfo.tm_mday;
-	year = timeinfo.tm_year + 1900;
+	day = std::to_string(timeinfo.tm_mday);
+	year = std::to_string(timeinfo.tm_year + 1900);
 
 	int unfiltered_hour = timeinfo.tm_hour;
 	if (unfiltered_hour <= 9) {
@@ -47,6 +47,41 @@ DateTime::DateTime(){
 	len = time_stamp.length();
 }
 
+
+//converts a datestamp string into a DateTime object
+DateTime::DateTime(std::string str_time) {
+	len = str_time.length();
+	int counter = 1;
+	std::string line;
+	for (char& letter : str_time) {
+		if (letter == ' ') {
+			if (counter == 1) {
+				month = line;
+			}
+			else if (counter == 2) {
+				day = line;
+			}
+			else if (counter == 3) {
+				year = line;
+			}
+			line.clear();
+			++counter;
+			continue;
+		}
+		else if (letter == ':') {
+			if (counter == 4) {
+				hour = line;
+			} else if (counter == 5) {
+				minute = line;
+			}
+			line.clear();
+			++counter;
+			continue;
+		}
+		line.push_back(letter);
+	}
+	second = line;
+}
 
 //Given a integer, returns the respected month
 std::string DateTime::getMonth(int num) {
@@ -82,7 +117,7 @@ std::string DateTime::getMonth(int num) {
 	 
 //returns the current day in the format MM-DD-YYYY
 std::string DateTime::dateToString() {
-	return month + " " + std::to_string(day) + " " + std::to_string(year);
+	return month + " " + day + " " + year;
 }
 
 //returns the current time in the format HH-MM-SS
@@ -97,12 +132,20 @@ std::string DateTime::timeStamp() {
 
 
 
-//Task class for creation and modification of Tasks
+//Task class for creation and modification of Tasks. Takes in a string as the todo and uses the current time.
 Task::Task(std::string task) {
 		toDo = task;
 		len = task.length();
 		DateTime creationTime;
 		finished = false;
+}
+
+//Creates a Task using the string as the todo and using the DateTime object as the creationTime
+Task::Task(std::string task, DateTime dt) {
+	toDo = task;
+	len = task.length();
+	creationTime = DateTime(dt);
+	finished = false;
 }
 
 void Task::printTaskName() {
@@ -119,7 +162,7 @@ Data::Data(){
 }
 
 //adds a task the incompleted tasks
-void Data::addTask(std::string todo) {
+void Data::addTaskIncom(std::string todo) {
 	Task task(todo);
 	int task_length = task.toDo.length();
 	if (task_length > longest_Incom_Task) {
@@ -127,6 +170,23 @@ void Data::addTask(std::string todo) {
 	}
 	incomp_Tasks.insert(incomp_Tasks.begin(), task);
 }
+
+void Data::addTaskIncom(Task task) {
+	int task_length = task.toDo.length();
+	if (task_length > longest_Incom_Task) {
+		longest_Incom_Task = task_length;
+	}
+	incomp_Tasks.push_back(task);
+}
+
+void Data::addTaskCom(Task task) {
+	int task_length = task.toDo.length();
+	if (task_length > longest_Incom_Task) {
+		longest_Com_Task = task_length;
+	}
+	comp_Tasks.push_back(task);
+}
+
 
 
 //move an incomplete task to the completed tasks. Updates the longest completed task.
@@ -158,18 +218,94 @@ int Data::exportData() {
 	for (Task task : comp_Tasks) {
 		std::string task_name = task.toDo;
 		std::string task_time = task.creationTime.timeStamp();
-		savedData << "|" << task_name << ", " << task_time;
+		savedData << "|" << task_name << "&" << task_time;
 	}
 	savedData << "|\n";
 	savedData << longest_Com_Task << "\n";
 	for (Task task : incomp_Tasks) {
 		std::string task_name = task.toDo;
 		std::string task_time = task.creationTime.timeStamp();
-		savedData << "|" << task_name << ", " << task_time;
+		savedData << "|"<< task_name << "&" << task_time;
 	}
 	savedData << "|\n";
 	savedData << longest_Incom_Task << "\n";
 	savedData.close();
+	return 0;
+}
+
+//import the current data from the class to the text file
+int Data::importData() {
+	std::string com_tasks;
+	std::string longest_com;
+	std::string incom_tasks;
+	std::string longest_incom;
+	std::ifstream savedData;
+
+	savedData.open("data_file.txt");
+	std::getline(savedData, com_tasks);
+	std::getline(savedData, longest_com);
+	std::getline(savedData, incom_tasks);
+	std::getline(savedData, longest_incom);
+	//File is closed here 
+	savedData.close();
+
+	longest_Com_Task = std::stoi(longest_com);
+	longest_Incom_Task = std::stoi(longest_incom);
+	int type;
+	std::string todo;
+	std::string date;
+	for (char& letter : com_tasks) {
+		if (letter == '&') {
+			date.clear();
+			type = 0;
+			continue;
+		}
+		else if (letter == '|') {
+			if (todo != "") {
+				Task task = Task(todo, DateTime(date));
+				this->addTaskCom(task);
+			}
+			todo.clear();
+			type = 1;
+			continue;
+		}
+		if (type == 1) {
+			todo.std::string::push_back(letter);
+		}
+		else if (type == 0) {
+			date.std::string::push_back(letter);
+		}
+		else {
+			std::cout << "ERROR" << std::endl;
+			exit(1);
+		}
+	}
+	for (char& letter : incom_tasks) {
+		if (letter == '&') {
+			date.clear();
+			type = 0;
+			continue;
+		}
+		else if (letter == '|') {
+			if (todo != "") {
+				Task task = Task(todo, DateTime(date));
+				this->addTaskIncom(task);
+			}
+			todo.clear();
+			type = 1;
+			continue;
+		}
+		if (type == 1) {
+			todo.std::string::push_back(letter);
+		}
+		else if (type == 0) {
+			date.std::string::push_back(letter);
+		}
+		else {
+			std::cout << "ERROR" << std::endl;
+			exit(1);
+		}
+	}
 	return 0;
 }
 
