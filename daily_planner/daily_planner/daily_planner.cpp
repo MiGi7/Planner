@@ -26,9 +26,15 @@ void checkedSaved() {
 
 int main() {
 	Data newData;
-	newData.importData();
-	newData.incomp_Tasks[0].printTaskName();
-	newData.exportData();
+	newData.addTaskIncom("Hello there GINA");
+	newData.addTaskIncom("Its me GINA");
+	newData.addTaskIncom("I love my girlfriend");
+	newData.addTaskIncom("I need to shower");
+	int date_len = currentDate();
+	todoBar(newData);
+	printTasks(newData);
+
+	return 0;
 }
 
 

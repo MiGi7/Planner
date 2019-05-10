@@ -61,6 +61,7 @@ public:
 	void addTaskIncom(Task task);
 	void addTaskCom(Task task);
 	void movetoCom(int pos);
+	void changeTask(char selector, std::string todo, int pos);
 	int exportData();
 	int importData();
 };

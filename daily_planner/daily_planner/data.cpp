@@ -161,7 +161,7 @@ Data::Data(){
 	int longest_Incom_Task = 0;
 }
 
-//adds a task the incompleted tasks
+//adds a task to the incompleted tasks
 void Data::addTaskIncom(std::string todo) {
 	Task task(todo);
 	int task_length = task.toDo.length();
@@ -171,6 +171,7 @@ void Data::addTaskIncom(std::string todo) {
 	incomp_Tasks.insert(incomp_Tasks.begin(), task);
 }
 
+//adds an incompleted TASK to the Data
 void Data::addTaskIncom(Task task) {
 	int task_length = task.toDo.length();
 	if (task_length > longest_Incom_Task) {
@@ -179,6 +180,7 @@ void Data::addTaskIncom(Task task) {
 	incomp_Tasks.push_back(task);
 }
 
+//adds a completed TASK to the Data
 void Data::addTaskCom(Task task) {
 	int task_length = task.toDo.length();
 	if (task_length > longest_Incom_Task) {
@@ -209,6 +211,17 @@ void Data::updateLen() {
 		}
 	}
 	longest_Incom_Task = max;
+}
+
+void Data::changeTask(char selector, std::string todo, int pos) {
+	std::vector<Task> tasks;
+	if (selector == 'i') {
+		tasks = incomp_Tasks;
+	}
+	else if (selector == 'c') {
+		tasks = comp_Tasks;
+	}
+	tasks[pos].toDo = todo;
 }
 
 //exports the user data to a saved file 
@@ -254,6 +267,7 @@ int Data::importData() {
 	int type;
 	std::string todo;
 	std::string date;
+	//handles the reading of completed tasks
 	for (char& letter : com_tasks) {
 		if (letter == '&') {
 			date.clear();
@@ -280,6 +294,7 @@ int Data::importData() {
 			exit(1);
 		}
 	}
+	//handles the reading of incompleted tasks
 	for (char& letter : incom_tasks) {
 		if (letter == '&') {
 			date.clear();
