@@ -41,10 +41,21 @@ void printComp(Data data) {
 
 int main() {
 	Data newData;
+<<<<<<< HEAD
 	newData.importData();
 	int date_len = currentDate();
 	printComp(newData);
 	printIncomp(newData);
+=======
+	newData.addTaskIncom("Hello there GINA");
+	newData.addTaskIncom("Its me GINA");
+	newData.addTaskIncom("I love my girlfriend");
+	newData.addTaskIncom("I need to shower");
+	int date_len = currentDate();
+	todoBar(newData);
+	printTasks(newData);
+
+>>>>>>> ed029d9e0d7465bbb21319178e6f95d50bd610c6
 	return 0;
 }
 

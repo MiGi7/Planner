@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 |
 0
 |do some more work&May 10 2019 09:58:25|do some work&May 10 2019 09:58:25|I need to shower&May 10 2019 09:56:04|I love my girlfriend&May 10 2019 09:56:04|Its me GINA&May 10 2019 09:56:04|Hello there GINA&May 10 2019 09:56:04|
+=======
+|Ginas&May 8 2019 22:11:03|
+5
+|get finish this shit&May 8 2019 23:16:04|Gina&May 8 2019 22:11:03|poo&May 8 2019 22:11:03|
+>>>>>>> ed029d9e0d7465bbb21319178e6f95d50bd610c6
 20
