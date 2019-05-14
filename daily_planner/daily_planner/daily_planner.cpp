@@ -6,8 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <Windows.h>
 using namespace std;
-
 
 //prints the complete tasks refreshing the console
 //prints the incomplete tasks refreshing the console
@@ -53,14 +53,6 @@ void commandSelection(Data data, int state) {
 		std::cin >> pos;
 		data.movetoCom(pos);
 		printList(data, state);
-		if (data.exportData()) {
-			std::cout << std::endl;
-			std::cout << "Tasks has successfully been moved!" << std::endl;
-		}
-		else {
-			std::cout << std::endl;
-			std::cout << "Something went wrong. Please try again." << std::endl;
-		}
 		if (data.exportData()) {
 			std::cout << std::endl;
 			std::cout << "Tasks has successfully been moved!" << std::endl;
@@ -144,6 +136,12 @@ int checkedSaved() {
 
 
 int main() {
+	HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
+
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 700, 1000, TRUE);
+
 	Data newData;
 	if (checkedSaved()) {
 		newData.importData();
