@@ -9,8 +9,124 @@
 using namespace std;
 
 
+//prints the complete tasks refreshing the console
+//prints the incomplete tasks refreshing the console
+int printList(Data data, int state) {
+	if (state == 1) {
+		system("CLS");
+		todoBar(data);
+		printTasks(data, 'i');
+		commandBar();
+		return 1;
+	}
+	else if (state == 0) {
+		system("CLS");
+		todoBar(data);
+		printTasks(data, 'c');
+		commandBar();
+		return 0;
+	}
+}
 
-void checkedSaved() {
+void commandSelection(Data data, int state) {
+	std::string command;
+	std::getline(std::cin, command);
+	if (command == "add" || command == "Add") {
+		std::string task;
+		std::cout << "What is the name of your task?" << std::endl;
+		std::getline(std::cin, task);
+		data.addTaskIncom(task);
+		printList(data, state);
+		if (data.exportData()) {
+			std::cout << std::endl;
+			std::cout << "Tasks has successfully been moved!" << std::endl;
+		}
+		else {
+			std::cout << std::endl;
+			std::cout << "Something went wrong. Please try again." << std::endl;
+		}
+		commandSelection(data, state);
+	}
+	else if (command == "movetocomp" || command == "Movetocom") {
+		int pos;
+		std::cout << "What task would you like to move to the completed tasks (number)?" << std::endl;
+		std::cin >> pos;
+		data.movetoCom(pos);
+		printList(data, state);
+		if (data.exportData()) {
+			std::cout << std::endl;
+			std::cout << "Tasks has successfully been moved!" << std::endl;
+		}
+		else {
+			std::cout << std::endl;
+			std::cout << "Something went wrong. Please try again." << std::endl;
+		}
+		if (data.exportData()) {
+			std::cout << std::endl;
+			std::cout << "Tasks has successfully been moved!" << std::endl;
+		}
+		else {
+			std::cout << std::endl;
+			std::cout << "Something went wrong. Please try again." << std::endl;
+		}
+		commandSelection(data, state);
+	}
+	else if (command == "delete" || command == "Delete") {
+		int pos;
+		std::cout << "What task would you like to delete (number)?" << std::endl;
+		std::cin >> pos;
+		std::string response;
+		std::cout << "Are you sure you would like to delete this task (Yes or No)?" << std::endl;
+		std::cin >> response;
+		if (response == "y" || response == "Yes" || response == "yes") {
+			data.deleteTask(pos);
+			printList(data, state);
+			if (data.exportData()) {
+				std::cout << std::endl;
+				std::cout << "Tasks has successfully been moved!" << std::endl;
+			}
+			else {
+				std::cout << std::endl;
+				std::cout << "Something went wrong. Please try again." << std::endl;
+			}
+			commandSelection(data, state);
+		}
+		else {
+			std::cout << "Tasks has not been removed" << std::endl;
+			printList(data, state);
+			commandSelection(data, state);
+		}
+		if (data.exportData()) {
+			std::cout << std::endl;
+			std::cout << "Tasks has successfully been moved!" << std::endl;
+		}
+		else {
+			std::cout << std::endl;
+			std::cout << "Something went wrong. Please try again." << std::endl;
+		}
+	}
+	else if (command == "Incomp" || command == "incomp" || command == "incom" || command == "Incom") {
+		state = 1;
+		printList(data, state);
+		commandSelection(data, state);
+	}
+	else if (command == "comp" || command == "Comp" || command == "Com" || command == "com") {
+		state = 0;
+		printList(data, state);
+		commandSelection(data, state);
+	}
+	else {
+		std::cout << "the program is about to close" << std::endl;
+		std::string response;
+		if (response == "y" || response == "Yes" || response == "yes") {
+			exit(0);
+		}
+		printList(data, state);
+		commandSelection(data, state);
+	}
+}
+
+int checkedSaved() {
 	const string file = "data_file.txt";
 	ifstream ifile(file);
 	if (!(bool)ifile) {
@@ -19,43 +135,21 @@ void checkedSaved() {
 		file_ << "This is saved data for the Planner" << endl;
 		file_.close();
 		cout << "Saved data created" << endl;
-		return;
+		return 0;
 	}
 	cout << "There is saved data present" << endl;
+	return 1;
 }
 
-//prints the incomplete tasks refreshing the console
-void printIncomp(Data data) {
-	system("CLS");
-	todoBar(data);
-	printTasks(data, 'i');
-}
-
-//prints the complete tasks refreshing the console
-void printComp(Data data) {
-	system("CLS");
-	todoBar(data);
-	printTasks(data, 'c');
-}
 
 
 int main() {
 	Data newData;
-<<<<<<< HEAD
-	newData.importData();
-	int date_len = currentDate();
-	printComp(newData);
-	printIncomp(newData);
-=======
-	newData.addTaskIncom("Hello there GINA");
-	newData.addTaskIncom("Its me GINA");
-	newData.addTaskIncom("I love my girlfriend");
-	newData.addTaskIncom("I need to shower");
-	int date_len = currentDate();
-	todoBar(newData);
-	printTasks(newData);
-
->>>>>>> ed029d9e0d7465bbb21319178e6f95d50bd610c6
+	if (checkedSaved()) {
+		newData.importData();
+	}
+	printList(newData, 1);
+	commandSelection(newData, 1);
 	return 0;
 }
 

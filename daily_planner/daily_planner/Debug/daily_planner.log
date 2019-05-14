@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-﻿  daily_planner.cpp
-  daily_planner.vcxproj -> C:\Users\mikem\Desktop\Planner\daily_planner\Debug\daily_planner.exe
-=======
-﻿  visuals.cpp
+﻿  data.cpp
   daily_planner.vcxproj -> C:\Users\Michael\Desktop\Planner\daily_planner\Debug\daily_planner.exe
->>>>>>> ed029d9e0d7465bbb21319178e6f95d50bd610c6

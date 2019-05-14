@@ -199,7 +199,7 @@ void Data::movetoCom(int pos) {
 		longest_Com_Task = task_length;
 	}
 	comp_Tasks.push_back(task);
-	incomp_Tasks.erase(incomp_Tasks.begin() + pos);
+	incomp_Tasks.erase(incomp_Tasks.begin() + pos - 1);
 }
 
 //Updates the length of the longest incomplete task
@@ -211,6 +211,10 @@ void Data::updateLen() {
 		}
 	}
 	longest_Incom_Task = max;
+}
+
+void Data::deleteTask(int pos) {
+	incomp_Tasks.erase(incomp_Tasks.begin() + pos - 1);
 }
 
 void Data::changeTask(char selector, std::string todo, int pos) {
@@ -243,7 +247,7 @@ int Data::exportData() {
 	savedData << "|\n";
 	savedData << longest_Incom_Task << "\n";
 	savedData.close();
-	return 0;
+	return 1;
 }
 
 //import the current data from the class to the text file
@@ -321,6 +325,6 @@ int Data::importData() {
 			exit(1);
 		}
 	}
-	return 0;
+	return 1;
 }
 
