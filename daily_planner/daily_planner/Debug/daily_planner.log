@@ -1,6 +1,2 @@
-﻿  pch.cpp
-  daily_planner.cpp
-  data.cpp
-  visuals.cpp
-  Generating Code...
+﻿  daily_planner.cpp
   daily_planner.vcxproj -> C:\Users\mikem\Desktop\Planner\daily_planner\Debug\daily_planner.exe

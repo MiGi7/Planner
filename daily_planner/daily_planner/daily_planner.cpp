@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 using namespace std;
 
 
@@ -15,7 +16,7 @@ void checkedSaved() {
 	if (!(bool)ifile) {
 		ofstream file_;
 		file_.open("data_file.txt");
-		file_ << "This is saved data for Planner" << endl;
+		file_ << "This is saved data for the Planner" << endl;
 		file_.close();
 		cout << "Saved data created" << endl;
 		return;
@@ -23,11 +24,28 @@ void checkedSaved() {
 	cout << "There is saved data present" << endl;
 }
 
+//prints the incomplete tasks refreshing the console
+void printIncomp(Data data) {
+	system("CLS");
+	todoBar(data);
+	printTasks(data, 'i');
+}
+
+//prints the complete tasks refreshing the console
+void printComp(Data data) {
+	system("CLS");
+	todoBar(data);
+	printTasks(data, 'c');
+}
+
 
 int main() {
 	Data newData;
-	newData.addTask("poo");
-	newData.incomp_Tasks[0].printTaskName();
+	newData.importData();
+	int date_len = currentDate();
+	printComp(newData);
+	printIncomp(newData);
+	return 0;
 }
 
 

@@ -7,17 +7,22 @@
 #ifndef DateTime_H
 #define DateTime_H
 class DateTime {
-	std::string month;
-	int day;
-	int year;
-	int hour;
-	int minute;
-	int second;
 public:
+	std::string month;
+	std::string day;
+	std::string year;
+	std::string hour;
+	std::string minute;
+	std::string second;
+	int len;
+
 	DateTime();
+
+	DateTime(std::string str_time);
 	std::string getMonth(int num);
 	std::string dateToString();
 	std::string timeToString();
+	std::string timeStamp();
 };
 #endif
 
@@ -26,12 +31,15 @@ public:
 
 
 class Task {
+public:
 	std::string toDo;
+	int len;
 	DateTime creationTime;
 	bool finished;
-public:
 	Task(std::string task="");
+	Task(std::string task, DateTime dt);
 	void printTaskName();
+
 };
 
 #endif Task_H
@@ -48,8 +56,14 @@ public:
 	int longest_Incom_Task;
 
 	Data();
-	void addTask(std::string todo);
+	void updateLen();
+	void addTaskIncom(std::string todo);
+	void addTaskIncom(Task task);
+	void addTaskCom(Task task);
 	void movetoCom(int pos);
+	void changeTask(char selector, std::string todo, int pos);
+	int exportData();
+	int importData();
 };
 
 #endif Data_H
