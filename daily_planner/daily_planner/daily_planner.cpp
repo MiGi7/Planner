@@ -107,12 +107,14 @@ void commandSelection(Data data, int state) {
 		printList(data, state);
 		commandSelection(data, state);
 	}
-	else {
-		std::cout << "the program is about to close" << std::endl;
+	else if (command == "q" || command == "exit"){
 		std::string response;
-		if (response == "y" || response == "Yes" || response == "yes") {
-			exit(0);
-		}
+		std::cout << "Would you like to quit the program? (Yes or No)" << std::endl;
+		std::cin >> response;
+		printList(data, state);
+		commandSelection(data, state);
+	}
+	else {
 		printList(data, state);
 		commandSelection(data, state);
 	}
