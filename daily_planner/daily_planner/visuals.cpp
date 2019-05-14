@@ -44,11 +44,28 @@ void todoBar(Data data) {
 	std::cout << std::endl;
 }
 
+<<<<<<< HEAD
+void printTasks(Data data, char selector) {
+	char symbol = '*';
+	std::vector<Task> list;
+	int len;
+	if (selector == 'i') {
+		list = data.incomp_Tasks;
+		len = data.longest_Incom_Task;
+	}
+	else if (selector == 'c') {
+		list = data.comp_Tasks;
+		len = data.longest_Com_Task;
+	}
+	int counter = 1;
+	for (Task &element : list) {
+=======
 void printTasks(Data data) {
 	char symbol = '*';
 	int len = data.longest_Incom_Task;
 	int counter = 1;
 	for (Task &element : data.incomp_Tasks) {
+>>>>>>> ed029d9e0d7465bbb21319178e6f95d50bd610c6
 		int len_task = element.len;
 		std::string num = std::to_string(counter);
 		num = num + ". ";
