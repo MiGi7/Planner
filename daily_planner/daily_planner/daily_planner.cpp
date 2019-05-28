@@ -63,6 +63,25 @@ void commandSelection(Data data, int state) {
 		}
 		commandSelection(data, state);
 	}
+	else if (command == "change" || command == "Change") {
+		int pos;
+		std::cout << "What task would you like to change (number)?" << std::endl;
+		std::cin >> pos;
+		std::string newtask;
+		std::cout << "What would you like the task to be?" << std::endl;
+		std::cin >> newtask;
+		data.changeTask(state, newtask, pos);
+		printList(data, state);
+		if (data.exportData()) {
+			std::cout << std::endl;
+			std::cout << "Tasks has successfully been changed!" << std::endl;
+		}
+		else {
+			std::cout << std::endl;
+			std::cout << "Something went wrong. Please try again." << std::endl;
+		}
+		commandSelection(data, state);
+	}
 	else if (command == "delete" || command == "Delete") {
 		int pos;
 		std::cout << "What task would you like to delete (number)?" << std::endl;
@@ -75,7 +94,7 @@ void commandSelection(Data data, int state) {
 			printList(data, state);
 			if (data.exportData()) {
 				std::cout << std::endl;
-				std::cout << "Tasks has successfully been moved!" << std::endl;
+				std::cout << "Tasks has successfully been deleted!" << std::endl;
 			}
 			else {
 				std::cout << std::endl;
@@ -141,8 +160,7 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
 	GetWindowRect(console, &ConsoleRect);
-
-	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 700, 1000, TRUE);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 900, 1000, TRUE);
 
 	Data newData;
 	if (checkedSaved()) {

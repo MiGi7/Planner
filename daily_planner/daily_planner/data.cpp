@@ -153,6 +153,8 @@ void Task::printTaskName() {
 }
 
 
+
+
 //collection of all tasks and the longest tasks
 Data::Data(){
 	std::vector<Task>comp_Tasks;
@@ -217,15 +219,15 @@ void Data::deleteTask(int pos) {
 	incomp_Tasks.erase(incomp_Tasks.begin() + pos - 1);
 }
 
+//takes a select, the string of the new task and the position of the task within the list.
 void Data::changeTask(char selector, std::string todo, int pos) {
-	std::vector<Task> tasks;
-	if (selector == 'i') {
-		tasks = incomp_Tasks;
+	if (selector == 1) {
+		incomp_Tasks[pos - 1].toDo = todo;
 	}
-	else if (selector == 'c') {
-		tasks = comp_Tasks;
+	else if (selector == 0) {
+		comp_Tasks[pos - 1].toDo = todo;
 	}
-	tasks[pos].toDo = todo;
+
 }
 
 //exports the user data to a saved file 

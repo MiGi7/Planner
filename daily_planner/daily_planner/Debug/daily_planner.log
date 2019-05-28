@@ -1,4 +1,2 @@
-﻿  daily_planner.cpp
-c:\users\michael\desktop\planner\daily_planner\daily_planner\daily_planner.cpp(29): warning C4715: 'printList': not all control paths return a value
-c:\users\michael\desktop\planner\daily_planner\daily_planner\daily_planner.cpp(121): warning C4717: 'commandSelection': recursive on all control paths, function will cause runtime stack overflow
+﻿  data.cpp
   daily_planner.vcxproj -> C:\Users\Michael\Desktop\Planner\daily_planner\Debug\daily_planner.exe
